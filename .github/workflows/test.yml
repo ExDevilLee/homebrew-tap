@@ -1,0 +1,47 @@
+name: Test Casks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@v7
+
+      - name: Register tap
+        run: brew tap ExDevilLee/tap "$GITHUB_WORKSPACE"
+
+      - name: Check Cask style
+        run: brew style Casks/threadbeacon.rb
+
+      - name: Audit Cask
+        run: brew audit --cask --strict ExDevilLee/tap/threadbeacon
+
+      - name: Verify download
+        run: brew fetch --cask ExDevilLee/tap/threadbeacon
+
+      - name: Verify isolated install
+        run: |
+          app_dir="$RUNNER_TEMP/threadbeacon-apps"
+          app="$app_dir/ThreadBeacon.app"
+          expected_version="$(brew info --json=v2 --cask ExDevilLee/tap/threadbeacon | jq -r '.casks[0].version')"
+          mkdir -p "$app_dir"
+
+          brew install --cask --appdir="$app_dir" ExDevilLee/tap/threadbeacon
+          test -d "$app"
+          test "$(plutil -extract CFBundleShortVersionString raw "$app/Contents/Info.plist")" = "$expected_version"
+          lipo -archs "$app/Contents/MacOS/ThreadBeacon" | grep -q arm64
+          lipo -archs "$app/Contents/MacOS/ThreadBeacon" | grep -q x86_64
+          codesign --verify --deep --strict "$app"
+
+          brew uninstall --cask threadbeacon
+          test ! -e "$app"
