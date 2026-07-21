@@ -15,4 +15,15 @@ cask "threadbeacon" do
     "~/Library/Application Support/ThreadBeacon",
     "~/Library/Preferences/io.github.exdevillee.threadbeacon.macos.plist",
   ]
+
+  caveats <<~EOS
+    ThreadBeacon is currently an ad-hoc signed, unnotarized technical preview.
+    If macOS shows "ThreadBeacon Not Opened" after the first launch:
+
+      1. Choose Done, not Move to Trash.
+      2. In Finder, Control-click /Applications/ThreadBeacon.app and choose Open.
+      3. If it is still blocked, use System Settings > Privacy & Security > Open Anyway.
+
+    Do not disable Gatekeeper or remove quarantine attributes with untrusted commands.
+  EOS
 end

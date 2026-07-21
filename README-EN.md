@@ -13,10 +13,17 @@ brew install --cask ExDevilLee/tap/threadbeacon
 ThreadBeacon requires macOS 14 or later and supports Apple Silicon and Intel Macs.
 
 The current build is an ad-hoc signed, unnotarized technical preview. Homebrew downloads,
-verifies, and installs the app; it does not bypass Gatekeeper. If macOS blocks the first
-launch, follow the
+verifies, and installs the app; it does not bypass Gatekeeper. If the first launch shows
+**“ThreadBeacon” Not Opened** with only **Move to Trash** and **Done**:
+
+1. Select **Done**, not **Move to Trash**.
+2. In Finder's **Applications** folder, Control-click `ThreadBeacon.app` and select **Open**.
+3. If it is still blocked, open **System Settings > Privacy & Security**, find the ThreadBeacon
+   notice, and select **Open Anyway**.
+
+See the
 [ThreadBeacon installation guide](https://github.com/ExDevilLee/codex-threadbeacon-macos#download-and-install)
-without disabling system-wide security protections.
+for details. Do not disable Gatekeeper or use untrusted commands to remove quarantine attributes.
 
 ## Upgrade
 

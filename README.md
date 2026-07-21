@@ -13,9 +13,17 @@ brew install --cask ExDevilLee/tap/threadbeacon
 ThreadBeacon 当前要求 macOS 14 或更高版本，支持 Apple Silicon 与 Intel Mac。
 
 当前产物仍是 ad-hoc 签名、尚未经过 Apple 公证的技术预览版。Homebrew 只负责下载、校验并
-安装 App，不会绕过 Gatekeeper。首次启动如果被 macOS 拦截，请遵循
-[ThreadBeacon 安装说明](https://github.com/ExDevilLee/codex-threadbeacon-macos#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85)，
-不要关闭系统级安全保护。
+安装 App，不会绕过 Gatekeeper。首次启动如果出现“ThreadBeacon 未打开”且只有“移到废纸篓”
+和“完成”：
+
+1. 点击“完成”，不要点击“移到废纸篓”。
+2. 在 Finder 的“应用程序”中按住 Control 点击 `ThreadBeacon.app`，选择“打开”。
+3. 如果仍被拦截，前往“系统设置 > 隐私与安全性”，找到 ThreadBeacon 对应提示并选择
+   “仍要打开”。
+
+详细说明见
+[ThreadBeacon 安装说明](https://github.com/ExDevilLee/codex-threadbeacon-macos#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85)。
+不要关闭 Gatekeeper，也不要使用来源不明的 quarantine 清除命令。
 
 ## 升级
 
