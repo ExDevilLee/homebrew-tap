@@ -1,6 +1,6 @@
 cask "threadbeacon" do
-  version "0.1.8"
-  sha256 "8d48eab506449c058b6c0c936953512ddde277c750d17a066d41a5c789e2f957"
+  version "0.1.10"
+  sha256 "db2b11a60915217d12cc44a9bcfec90a7d0eebf84cb0b51a88f2cfbf07d47083"
 
   url "https://github.com/ExDevilLee/codex-threadbeacon-macos/releases/download/v#{version}/ThreadBeacon-v#{version}-macos-universal.zip"
   name "Codex ThreadBeacon"
